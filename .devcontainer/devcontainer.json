@@ -1,0 +1,19 @@
+{
+    "name": "Todo App Dev",
+    "dockerComposeFile": [
+      "../docker-compose.yml",
+      "docker-compose.override.yml"
+    ],
+    "service": "frontend",
+    "workspaceFolder": "/app",
+    "settings": {
+      "terminal.integrated.defaultProfile.linux": "bash"
+    },
+    "extensions": [
+      "ms-azuretools.vscode-docker",
+      "golang.Go",
+      "dbaeumer.vscode-eslint"
+    ],
+    "postCreateCommand": "snp install"
+  }
+  
