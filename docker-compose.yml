@@ -1,44 +1,16 @@
 version: '3.8'
-services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: ./backend/Dockerfile.backend
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./backend:/app
-    environment:
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=todo
-    depends_on:
-      - db
 
+services:
   frontend:
+    image: node:18
+    container_name: todo_frontend
     build:
-      context: ./frontend
-      dockerfile: ./frontend/Dockerfile.frontend
+      context: .
+      dockerfile: ./app/frontend/Dockerfile
+    working_dir: /app/frontend
+    volumes:
+      - ./app/frontend:/app/frontend
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-
-  db:
-    image: mysql:8
-    container_name: todo-db
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: todo
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:
+    stdin_open: true
+    command: npm start

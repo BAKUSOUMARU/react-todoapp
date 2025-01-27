@@ -1,19 +1,17 @@
 {
-    "name": "Todo App Dev",
-    "dockerComposeFile": [
-      "../docker-compose.yml",
-      "docker-compose.override.yml"
-    ],
-    "service": "frontend",
-    "workspaceFolder": "/app",
+  "name": "Todo App Development Environment",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/app/frontend",
     "settings": {
-      "terminal.integrated.defaultProfile.linux": "bash"
-    },
-    "extensions": [
-      "ms-azuretools.vscode-docker",
-      "golang.Go",
-      "dbaeumer.vscode-eslint"
-    ],
-    "postCreateCommand": "snp install"
-  }
-  
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "editor.formatOnSave": true
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "golang.go",
+    "ms-azuretools.vscode-docker",
+    "esbenp.prettier-vscode"
+  ],
+  "remoteUser": "node"
+}
